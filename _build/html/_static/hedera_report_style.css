@@ -1,0 +1,15 @@
+/* josefin-sans regular */
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 350;
+    src: url('../assets/font/JosefinSans-VariableFont_wght.ttf'); 
+  }
+
+body{
+      font-family: "Josefin Sans" !important;
+  }
+p {
+    text-align: justify;
+}
+  

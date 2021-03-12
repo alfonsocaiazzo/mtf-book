@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 541, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/caiazzo/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+HIT_PATH = '../../../HIT/src/'
+institution_id = 7
+lang = 'en'
+import os,sys, folium
+sys.path.insert(0, os.path.normpath(os.path.join(os.path.abspath(''), HIT_PATH)))
+import hedera_types as hedera
+import odk_interface as odk
+
+mfi = hedera.mfi(institution_id,setPathBook=True)
+mfi.odk_data_name = "../../../ODK_Collect_Data/Apide/Data/SDG7/results.csv"
+data = mfi.read_survey(mfi.odk_data_name)
+mfi.HH = odk.households(data)
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-1-901d9a6dfa80>[0m in [0;36m<module>[0;34m[0m
+[1;32m      4[0m [0;32mimport[0m [0mos[0m[0;34m,[0m[0msys[0m[0;34m,[0m [0mfolium[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0msys[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0minsert[0m[0;34m([0m[0;36m0[0m[0;34m,[0m [0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mnormpath[0m[0;34m([0m[0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mjoin[0m[0;34m([0m[0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mabspath[0m[0;34m([0m[0;34m''[0m[0;34m)[0m[0;34m,[0m [0mHIT_PATH[0m[0;34m)[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 6[0;31m [0;32mimport[0m [0mhedera_types[0m [0;32mas[0m [0mhedera[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m [0;32mimport[0m [0modk_interface[0m [0;32mas[0m [0modk[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m [0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'hedera_types'
+ModuleNotFoundError: No module named 'hedera_types'
+
